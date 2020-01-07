@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".MainActivity">
-
-    <TextView
-            android:id="@+id/tv_text"
-            android:layout_width="wrap_content"
+    <ViewFlipper
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:id="@+id/flipper_one"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_width="match_parent"
+            android:flipInterval="500"
+            android:focusable="false"
+            android:autoStart="false"
+            android:focusableInTouchMode="false"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:textColor="#333333"
+    />
+    <ViewFlipper
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:id="@+id/flipper_two"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:flipInterval="2000"
+            android:focusable="false"
+            android:autoStart="false"
+            android:focusableInTouchMode="false"
+            android:inAnimation="@anim/roll_in"
+            android:outAnimation="@anim/roll_out"
+            android:textColor="#333333"
+    />
+</LinearLayout>
