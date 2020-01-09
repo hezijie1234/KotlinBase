@@ -12,11 +12,17 @@ import android.widget.ViewFlipper
 
 class MainActivity : AppCompatActivity() {
 
+    init {
+
+    }
+
+    lateinit var viewFlipOne: ViewFlipper
+    lateinit var viewFliptwo:ViewFlipper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val viewFlipOne: ViewFlipper = findViewById(R.id.flipper_one)
-        val viewFliptwo: ViewFlipper = findViewById(R.id.flipper_two)
+        viewFlipOne = findViewById(R.id.flipper_one)
+        viewFliptwo = findViewById(R.id.flipper_two)
 
         var arrayOf = arrayOf(
             "早上，曹**接单成功！3天话务员360元",

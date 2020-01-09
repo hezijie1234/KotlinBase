@@ -27,7 +27,7 @@ class User{
     }
     var age:Int by Delegates.vetoable(1,{
             property, oldValue, newValue ->
-        true
+        newValue == 10
     })
 }
 
