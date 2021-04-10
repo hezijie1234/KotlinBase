@@ -1,5 +1,7 @@
 package com.zijie.kotlinbase
 
+import java.lang.Double.NaN
+
 /**
  * Created by  hezijie on 2019/12/13.
  */
@@ -36,6 +38,75 @@ fun main() {
 //    println("when use is ${whenUses("jie")}")
 //    inUses(1)
     listUses()
+    rangeTest()
+    studyWhile()
+}
+
+fun studyWhile(){
+    var arrayOf = arrayOf(2,32,33,44,55,66,77)
+    for (i :Int in arrayOf){
+        println("element is $i")
+    }
+    println("另外一种使用方法")
+    for (i in 1..10){
+        println("for in is $i")
+    }
+
+}
+
+fun useWhen(){
+    val me = "9"
+    val m = when(me){
+        "1" -> "this is dog"
+        "2" -> "hah"
+        else -> "zijie"
+    }
+    val l = 10
+    when(l){
+        in 1..100 -> 100
+        is Int -> 300
+        else -> 200
+    }
+}
+
+fun rangeTest(){
+    println("-0.0和0.0谁大 ${-0.0 < 0.0}")
+    var c: Char = 'a';
+    var str: String = "\n hezijie"
+    println(c.toInt())
+    if ('a' in '0'..'9'){
+
+    }
+    var arrayOf = arrayOf("he", "zijie", "tim")
+    arrayOf.forEach { println(it) }
+    Array(5,{i-> (i * i).toString()})
+    var arrayOfNulls = arrayOfNulls<Int>(10)
+    var intArrayOf: IntArray = intArrayOf(1, 2, 3, 4)
+    var a: UByte = 1u
+    var b = 10u
+    val m = 100UL
+
+    val str1 = "hezijie"
+    println("str1 3th char is ${str1[2]}")
+    for (i in str1){
+        println("for test $i")
+    }
+    val str2 = "hello world\n"
+    val str3 = """he
+                  | zijie
+                  |is
+                  |niuban
+    """.trimMargin()
+    println(str2 + str3)
+    val a7 = 1
+    val a8 = 2
+    var a9 = if (a7 > a8){
+        var m = 10
+        m
+    }else{
+        val l = 99
+        a8
+    }
 }
 
 fun listUses(){
