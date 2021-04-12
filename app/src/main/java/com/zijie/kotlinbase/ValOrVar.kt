@@ -5,6 +5,7 @@ import java.lang.Double.NaN
 /**
  * Created by  hezijie on 2019/12/13.
  */
+
 fun main() {
     //val变量只可以赋值一次，只读变量，类似于java的final但不完全相同
     val j: Int = 2
@@ -37,22 +38,245 @@ fun main() {
 //    whileUses()
 //    println("when use is ${whenUses("jie")}")
 //    inUses(1)
-    listUses()
-    rangeTest()
-    studyWhile()
+//    listUses()
+//    rangeTest()
+//    studyWhile()
+//    fooFlag()
+//    var stu = Student("hezijie",18)
+//    var son = Son("haha",28);
+//    son.testOpen()
+//    Father.testCompanion()
+//    var son2 = Son2("zijie")
+//    var me = Me("zijie","he");
+    val mut: MutableList<Int> = mutableListOf(2,3,4,5,6)
+    mut.swap(2,3)
+    for ((index,value) in mut.withIndex()){
+        println("element $index is $value")
+    }
+    var any: Any?
+    any = Any()
+    println("money is ${any.money}")
+    any.money = 900
+    println("money is ${any.money}")
+    any = null;
+    println("测试可为空的及守着${any.toString(1)}")
+    var obj = Object()
+    Object.fun1()
+    Object.testFun1()
+
 }
+fun Object.Companion.testFun1(){
+    println("这个是同伴对象的扩展函数testFun1方法")
+}
+class Object{
+    companion object{
+        fun fun1(){
+            println("同伴对象里的fun1方法执行了")
+        }
+    }
+}
+
+var Any.money: Int
+get() = 10
+    set(value) {}
+
+
+fun Any?.toString( i:Int):String{
+    if (this == null){
+        return "null"
+    }
+    return toString()
+}
+
+fun <T> MutableList<T>.swap(index1: Int ,index2: Int){
+    val temp = this[index1]
+    this[index1] = this[index2]
+    this[index2] = temp
+
+}
+
+open class Father2{
+
+}
+
+class Son3 : Father2() {
+
+}
+
+
+interface Named{
+    val name: String
+}
+
+interface Person:Named{
+    var firstName: String
+    val secondName: String
+    override val name: String
+        get() = "hezijie"
+}
+class Me(override var firstName: String, override var secondName: String):Person{
+    override lateinit var name: String
+    var age: Int = 10
+       get
+    private set
+}
+
+interface OnInterface{
+     val name: String
+    get() = "hezijie"
+    var age: Int
+    fun initfoo(){
+        age = 10
+    }
+
+}
+
+class  Son2:Father{
+     lateinit var age: String;
+    constructor():super("zijie")
+    constructor(name: String):this(){
+        age = "18"
+
+        println("测试age ${age.length}")
+
+    }
+
+    override fun testOpen() {
+        super.testOpen()
+        lateinit var height: String
+        height = "180"
+    }
+}
+
+class Son( name: String,val age: Int):Father(name.also {  println("Argument for Base: $it")  }),IBase{
+    companion object{
+        const val m: Int = 10
+    }
+    override val fatherAge: Int
+        get() = super.fatherAge.also { println("Initializing Son fatherAge") }
+
+    var gg: String = "zijie"
+    get
+    set(value) {
+        println("设置一个新的值")
+        fatherAge.toString() + "zijie"
+        "haha"
+    }
+
+    init { println("Initializing Son")
+        println("mother is $mother")
+    }
+    constructor(name: String): this(name,18){
+
+    }
+
+    override fun testOpen() {
+        super<Father>.testOpen()
+        super<IBase>.testOpen()
+    }
+
+    inner class Baz{
+        var mother: String = "ee"
+        fun test(){
+            super@Son.mother
+        }
+    }
+}
+interface IBase{
+    fun testOpen(){
+
+    }
+}
+
+open class Father(var name: String){
+    open  val fatherAge: Int = 10.also {  println("Initializing size in Base: $it") }
+    open var mother: String = "zhongguo".also { println("mother initialize over") }
+    companion object {
+        fun testCompanion(){
+
+        }
+    }
+    init {
+        println("Initializing Base")
+    }
+    constructor():this("zijie"){
+
+    }
+    constructor( name: String, age: Int):this(){
+
+    }
+
+    open fun testOpen(){
+
+    }
+
+}
+
+class Student(var name :String,var age: Int,val height: Int){
+
+    init {
+        if (height == 0){
+            height == 180
+        }
+        println("init 初始化完成")
+    }
+    constructor(name: String):this(name,0,0){
+        println("第一个次构造函数")
+    }
+    constructor(name: String,age: Int):this(name){
+        println("第二个次构造函数")
+    }
+}
+
+fun fooFlag(){
+    arrayOf(2,3,4,5,6).forEach lit@ {
+        if (it == 3){
+            return@lit
+        }
+
+    }
+    println("到底执行了哪一个lit")
+    arrayOf(2,3,4,5,6).forEach {
+        if (it == 3){
+            return
+        }
+    }
+    println("到底执行了哪一个")
+
+}
+
+
 
 fun studyWhile(){
     var arrayOf = arrayOf(2,32,33,44,55,66,77)
     for (i :Int in arrayOf){
         println("element is $i")
     }
+
+    for(i: Int in arrayOf.indices){
+        println("indices element is ${arrayOf[i]}")
+    }
     println("另外一种使用方法")
     for (i in 1..10){
         println("for in is $i")
     }
 
+    for ((index,value) in arrayOf.withIndex()){
+        println("element $index is $value")
+    }
+    //标签的使用
+    ongloop@for (i:Int in arrayOf){
+        for (j:Int in arrayOf){
+            if (j == 32){
+                break@ongloop
+            }
+        }
+    }
+
+
 }
+
+
 
 fun useWhen(){
     val me = "9"
